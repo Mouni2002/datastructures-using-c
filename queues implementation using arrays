@@ -1,0 +1,101 @@
+#include<stdio.h>
+int MAX=20;
+int a[50],front=-1,rare=-1;
+void nqueue(int x)
+{
+        if(rare==MAX-1)
+        {
+                printf("stack overflow");
+        }
+        else
+        {
+                if(front==-1)
+                {
+                        front=rare=0;
+                }
+                else
+                {
+                        ++rare;
+                }
+                a[rare]=x;
+        }
+}
+int dequeue()
+{
+        int x;
+        if(front==-1)
+        {
+                return -1;
+        }
+        else
+        {
+                x=a[front];
+                if(front==rare)
+                {
+                        front=rare=-1;
+                }
+                else
+                {
+                        ++front;
+                }
+                return x;
+        }
+}
+void display()
+{
+        int i;
+        if(front==-1)
+        {
+                printf("no elememt found");
+        }
+        else
+        {
+                for(i=front;i<=rare;i++)
+                {
+                        printf("%d",a[i]);
+                }
+        }
+}
+int main()
+{
+        int ch,x;
+        printf("\n 1.nqueue \n 2.dequeue \n 3.display");
+        while(1)
+{
+        printf("enter your choice");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+                case 1:printf("enter element to insert");
+                       scanf("%d",&x);
+                       nqueue(x);
+                       break;
+                case 2:x=dequeue();
+                       printf("deleted element is %d:",x);
+                       break;
+                case 3:printf("the elements in the queue is:");
+                       display();
+                       break;
+                case 4:exit(0);
+                       break;
+        }
+}
+}
+
+
+output:
+
+ 1.nqueue
+ 2.dequeue
+ 3.displayenter your choice1
+enter element to insert1
+enter your choice1
+enter element to insert2
+enter your choice1
+enter element to insert3
+enter your choice1
+enter element to insert4
+enter your choice3
+the elements in the queue is:1234enter your choice2
+deleted element is 1:enter your choice3
+the elements in the queue is:234enter your choice4
